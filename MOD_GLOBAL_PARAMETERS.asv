@@ -1,0 +1,170 @@
+%
+%
+% *************************************************************************************
+% MOD_GLOBAL_PARAMETER contains the constants definition necessary for the correct
+% execution of the program
+% *************************************************************************************
+%%%--- module MOD_GLOBAL_PARAMETERS;
+% public ::;
+%***************************************************************************************
+% GENERIC CONSTANTS INPUT PARAMETER
+%***************************************************************************************
+% Frequency
+ global f; if isempty(f), f = 1.4; end;
+% ****************************** VEGETATION ********************************
+% Branches segment length
+global DSDWW; if isempty(DSDWW), DSDWW = .4; end;
+global dsdwf; if isempty(dsdwf), dsdwf = .3; end;
+global VOLMOIST_TRUNKS; if isempty(VOLMOIST_TRUNKS), VOLMOIST_TRUNKS = .5; end;
+global volmoist_matrix; if isempty(volmoist_matrix), volmoist_matrix = .6; end;
+%DSDWW = .4;% Vegetation dry matter density;
+%dsdwf = .3;             % Wood water content (Trunks);
+%VOLMOIST_TRUNKS = .5;   % Branches and leaves;
+%volmoist_matrix = .6;
+% Selection of PERMITTIVITY alghoritm
+% 1-> Matzler
+ global PERMITTIVITY; if isempty(PERMITTIVITY), PERMITTIVITY = 2; end;
+% 2-> Ulaby
+% ********************************* SOIL ***********************************
+% Soil CORRELATION length
+global SOIL_ROUGHNESS; if isempty(SOIL_ROUGHNESS), SOIL_ROUGHNESS = 1.5; end;
+global Tsol; if isempty(Tsol), Tsol = 290.; end;
+global Sand; if isempty(Sand), Sand = 0.8; end;
+global Clay; if isempty(Clay), Clay = 0.1; end;
+global Rob; if isempty(Rob), Rob = 1.25; end;
+
+
+%SOIL_ROUGHNESS = 1.5;% Ground temperature;
+%Tsol = 290.;% SAND percentage;
+%Sand = 0.8;% CLAY percentage;
+%Clay = 0.1;
+%Rob = 1.25;
+% Selection of CORRELATION values
+% 1-> Exponential
+global CORRELATION; if isempty(CORRELATION), CORRELATION = 1; end;
+% 2-> Gaussian
+% Generic costants
+% pi Greek double precision
+% global DPI; if isempty(DPI), DPI = 3.141592653589793238d0; end;
+% pi Greek single precision
+% global pi; if isempty(pi), pi = 3.1415927; end;
+% Maximum order for Bessel series
+ global nmax0; if isempty(nmax0), nmax0 = 100; end;
+%***************************************************************************************
+% SAMPLE FREQUENCY OF BISTATIC SCATTERING FUNCTION
+%***************************************************************************************
+% nn = 2*(number of discrete intervals of incidence and scattering off - nadir angles);
+ %global nn; if isempty(nn), nn = 36; end;
+ global nn; if isempty(nn), nn = 18; end;
+% nm = number of Fourier components for dependence on (phi_s - phi) of scattering;
+ %global nm; if isempty(nm), nm = 64; end;
+ global nm; if isempty(nm), nm = 16; end;
+% NIJ number of intervals in theta and theta_s between 0 and pi/2
+ global nij; if isempty(nij), nij = fix(nn./2); end;
+% NM1 number of intervals in phi_s - phi between 0 and pi
+ global nm1; if isempty(nm1), nm1 = fix(nm./2) + 1; end;
+% nn = Number of Fourier elements
+ global nf; if isempty(nf), nf = -round(log(real(nm))./log(2.)); end;
+% Number of sublayer for matix doubling
+ global NSTRATI2; if isempty(NSTRATI2), NSTRATI2 = 11; end;
+ global NSTRATI; if isempty(NSTRATI), NSTRATI = 2.^NSTRATI2; end;
+%***************************************************************************************
+% SAMPLE FREQUENCY FOR LEGENDRE-GAUSS INTEGRATION METHOD
+%***************************************************************************************
+% Frequency sampling in integration method, two points o four points sampling points are foreseen.
+ global ns; if isempty(ns), ns = 2; end;
+
+
+%Coefficients for two points sampling 
+%REAL, DIMENSION(NS), PARAMETER	:: OM  = (/1, 1/) ,& ! zeros of Legendre polynomials
+%								   CHI = (/.5773502692 , -.5773502692/)   ! weights of Gaussian quadrature
+ 
+ 
+ 
+% Coefficients for two points sampling
+%global om; if isempty(om), om = [.3478548451, .6521451549, .6521451549, .3478548451]; end; % zeros of Legendre polynomials 
+global om; if isempty(om), om = [1, 1]; end; % zeros of Legendre polynomials 
+global chi; if isempty(chi), chi =[.5773502692 , -.5773502692]; end; %weights of Gaussian quadrature
+%chi =[.5773502692 , -.5773502692];
+
+
+% Coefficients for four points sampling
+%REAL, DIMENSION(ns), 
+%PARAMETER :: om  = (/.3478548451, .6521451549, .6521451549, .3478548451/),! zeros of Legendre polynomials
+
+
+%om = [.3478548451, .6521451549, .6521451549, .3478548451]; % zeros of Legendre polynomials
+
+%   CHI = (/.8611363116, .3399810436,-.3399810436,-.8611363116/)   ! weights of Gaussian quadrature
+%***************************************************************************************
+% EULERIAN ANGLES FOR ALL THE DIELECTRY BODIES
+%***************************************************************************************
+%
+% The values of Select is required in Infinite_Length and Hollow routine
+%
+% Leaves, used with Raylegh-Gans and Pysical Optics approximation
+ global ALPHA1DIS; if isempty(ALPHA1DIS), ALPHA1DIS = 15.; end;
+ global NALPHADIS; if isempty(NALPHADIS), NALPHADIS = 12; end;
+ global DALPHADIS; if isempty(DALPHADIS), DALPHADIS = 30. ; end;
+ global BETA1DIS; if isempty(BETA1DIS), BETA1DIS  = 5. ; end;
+ global NBETADIS; if isempty(NBETADIS), NBETADIS  = 9 ; end;
+ global DBETADIS; if isempty(DBETADIS), DBETADIS  = 10. ; end;
+ global GAMMA1DIS; if isempty(GAMMA1DIS), GAMMA1DIS = 0. ; end;
+ global NGAMMADIS; if isempty(NGAMMADIS), NGAMMADIS = 1 ; end;
+ global DGAMMADIS; if isempty(DGAMMADIS), DGAMMADIS = 0.; end;
+% Petioles, needles and secondary branches used with Rayleigh-Gans, Infinte length
+% and Pysical Optics approximation
+%
+% Select = 'P'  Petioles
+% Select = 'N'  Needles
+% Select = 'R'  Secondary Branches
+%
+ global ALPHA1PET; if isempty(ALPHA1PET), ALPHA1PET = 15.; end;
+ global NALPHAPET; if isempty(NALPHAPET), NALPHAPET = 12; end;
+ global DALPHAPET; if isempty(DALPHAPET), DALPHAPET = 30. ; end;
+ global BETA1PET; if isempty(BETA1PET), BETA1PET  = 5. ; end;
+ global NBETAPET; if isempty(NBETAPET), NBETAPET  = 9 ; end;
+ global DBETAPET; if isempty(DBETAPET), DBETAPET  = 10. ; end;
+ global GAMMA1PET; if isempty(GAMMA1PET), GAMMA1PET = 0. ; end;
+ global NGAMMAPET; if isempty(NGAMMAPET), NGAMMAPET = 1 ; end;
+ global DGAMMAPET; if isempty(DGAMMAPET), DGAMMAPET = 0.; end;
+% Ears used with Infinite length approximation
+%
+% Select = 'E'  Ears
+%
+ global ALPHA1EAR; if isempty(ALPHA1EAR), ALPHA1EAR = 15.; end;
+ global NALPHAEAR; if isempty(NALPHAEAR), NALPHAEAR = 1; end;
+ global DALPHAEAR; if isempty(DALPHAEAR), DALPHAEAR = 0. ; end;
+ global BETA1EAR; if isempty(BETA1EAR), BETA1EAR  = 0. ; end;
+ global NBETAEAR; if isempty(NBETAEAR), NBETAEAR  = 1 ; end;
+ global DBETAEAR; if isempty(DBETAEAR), DBETAEAR  = 0. ; end;
+ global GAMMA1EAR; if isempty(GAMMA1EAR), GAMMA1EAR = 0. ; end;
+ global NGAMMAEAR; if isempty(NGAMMAEAR), NGAMMAEAR = 1 ; end;
+ global DGAMMAEAR; if isempty(DGAMMAEAR), DGAMMAEAR = 0.; end;
+% Stems used with Infinite length
+%
+% Select = 'S'  Stem and Trunks
+%
+ global ALPHA1STE; if isempty(ALPHA1STE), ALPHA1STE = 15.; end;
+ global NALPHASTE; if isempty(NALPHASTE), NALPHASTE = 12; end;
+ global DALPHASTE; if isempty(DALPHASTE), DALPHASTE = 30. ; end;
+ global BETA1STE; if isempty(BETA1STE), BETA1STE  = 2. ; end;
+ global NBETASTE; if isempty(NBETASTE), NBETASTE  = 2 ; end;
+ global DBETASTE; if isempty(DBETASTE), DBETASTE  = 3.  ; end;
+ global GAMMA1STE; if isempty(GAMMA1STE), GAMMA1STE = 0. ; end;
+ global NGAMMASTE; if isempty(NGAMMASTE), NGAMMASTE = 1 ; end;
+ global DGAMMASTE; if isempty(DGAMMASTE), DGAMMASTE = 0.; end;
+% Used for branches Infinte length
+%
+% Select = 'B'  Primary branches
+%
+ global ALPHA1BRA; if isempty(ALPHA1BRA), ALPHA1BRA = 15.; end;
+ global NALPHABRA; if isempty(NALPHABRA), NALPHABRA = 12; end;
+ global DALPHABRA; if isempty(DALPHABRA), DALPHABRA = 30. ; end;
+ global BETA1BRA; if isempty(BETA1BRA), BETA1BRA = 5.  ; end;
+ global NBETABRA; if isempty(NBETABRA), NBETABRA  = 9 ; end;
+ global DBETABRA; if isempty(DBETABRA), DBETABRA  = 10.  ; end;
+ global GAMMA1BRA; if isempty(GAMMA1BRA), GAMMA1BRA = 0. ; end;
+ global NGAMMABRA; if isempty(NGAMMABRA), NGAMMABRA = 1 ; end;
+ global DGAMMABRA; if isempty(DGAMMABRA), DGAMMABRA = 0.; end;
+
