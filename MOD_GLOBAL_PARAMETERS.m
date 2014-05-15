@@ -133,11 +133,11 @@ global chi; if isempty(chi), chi =[.5773502692 , -.5773502692]; end; %weights of
 % Select = 'E'  Ears
 %
  global ALPHA1EAR; if isempty(ALPHA1EAR), ALPHA1EAR = 15.; end;
- global NALPHAEAR; if isempty(NALPHAEAR), NALPHAEAR = 1; end;
- global DALPHAEAR; if isempty(DALPHAEAR), DALPHAEAR = 0. ; end;
- global BETA1EAR; if isempty(BETA1EAR), BETA1EAR  = 0. ; end;
- global NBETAEAR; if isempty(NBETAEAR), NBETAEAR  = 1 ; end;
- global DBETAEAR; if isempty(DBETAEAR), DBETAEAR  = 0. ; end;
+ global NALPHAEAR; if isempty(NALPHAEAR), NALPHAEAR = 12.; end;
+ global DALPHAEAR; if isempty(DALPHAEAR), DALPHAEAR = 30 ; end;
+ global BETA1EAR; if isempty(BETA1EAR), BETA1EAR  = 5. ; end;
+ global NBETAEAR; if isempty(NBETAEAR), NBETAEAR  = 9. ; end;
+ global DBETAEAR; if isempty(DBETAEAR), DBETAEAR  = 10. ; end;
  global GAMMA1EAR; if isempty(GAMMA1EAR), GAMMA1EAR = 0. ; end;
  global NGAMMAEAR; if isempty(NGAMMAEAR), NGAMMAEAR = 1 ; end;
  global DGAMMAEAR; if isempty(DGAMMAEAR), DGAMMAEAR = 0.; end;
@@ -148,9 +148,9 @@ global chi; if isempty(chi), chi =[.5773502692 , -.5773502692]; end; %weights of
  global ALPHA1STE; if isempty(ALPHA1STE), ALPHA1STE = 15.; end;
  global NALPHASTE; if isempty(NALPHASTE), NALPHASTE = 12; end;
  global DALPHASTE; if isempty(DALPHASTE), DALPHASTE = 30. ; end;
- global BETA1STE; if isempty(BETA1STE), BETA1STE  = 2. ; end;
- global NBETASTE; if isempty(NBETASTE), NBETASTE  = 2 ; end;
- global DBETASTE; if isempty(DBETASTE), DBETASTE  = 3.  ; end;
+ global BETA1STE; if isempty(BETA1STE), BETA1STE  = 0. ; end;
+ global NBETASTE; if isempty(NBETASTE), NBETASTE  = 1 ; end;
+ global DBETASTE; if isempty(DBETASTE), DBETASTE  = 0.  ; end;
  global GAMMA1STE; if isempty(GAMMA1STE), GAMMA1STE = 0. ; end;
  global NGAMMASTE; if isempty(NGAMMASTE), NGAMMASTE = 1 ; end;
  global DGAMMASTE; if isempty(DGAMMASTE), DGAMMASTE = 0.; end;
@@ -161,10 +161,33 @@ global chi; if isempty(chi), chi =[.5773502692 , -.5773502692]; end; %weights of
  global ALPHA1BRA; if isempty(ALPHA1BRA), ALPHA1BRA = 15.; end;
  global NALPHABRA; if isempty(NALPHABRA), NALPHABRA = 12; end;
  global DALPHABRA; if isempty(DALPHABRA), DALPHABRA = 30. ; end;
- global BETA1BRA; if isempty(BETA1BRA), BETA1BRA = 5.  ; end;
- global NBETABRA; if isempty(NBETABRA), NBETABRA  = 9 ; end;
- global DBETABRA; if isempty(DBETABRA), DBETABRA  = 10.  ; end;
+ global BETA1BRA; if isempty(BETA1BRA), BETA1BRA = 4.5  ; end;
+ global NBETABRA; if isempty(NBETABRA), NBETABRA  = 10 ; end;
+ global DBETABRA; if isempty(DBETABRA), DBETABRA  = 9.  ; end;
  global GAMMA1BRA; if isempty(GAMMA1BRA), GAMMA1BRA = 0. ; end;
  global NGAMMABRA; if isempty(NGAMMABRA), NGAMMABRA = 1 ; end;
  global DGAMMABRA; if isempty(DGAMMABRA), DGAMMABRA = 0.; end;
 
+
+%  ! Leaves, used with Raylegh-Gans and Pysical Optics approximation
+% REAL, PARAMETER :: ALPHA1DIS = 15., NALPHADIS = 12, DALPHADIS = 30. ,&
+% 									 BETA1DIS  = 5. , NBETADIS  = 9 , DBETADIS  = 10. ,&
+% 									 GAMMA1DIS = 0. , NGAMMADIS = 1 , DGAMMADIS = 0.  
+% ! Petioles, needles, used with Rayleigh-Gans and Infinte length
+% REAL, PARAMETER :: ALPHA1PET = 15., NALPHAPET = 12, DALPHAPET = 30. ,&
+% 									 BETA1PET  = 5. , NBETAPET  = 9 , DBETAPET  = 10. ,&
+% 									 GAMMA1PET = 0. , NGAMMAPET = 1 , DGAMMAPET = 0. 
+% ! Ears used with Rayleigh-Gans and Infinite length
+% REAL, PARAMETER :: ALPHA1EAR = 15., NALPHAEAR = 12, DALPHAEAR = 30. ,&
+% 									 BETA1EAR  = 5. , NBETAEAR  = 9 , DBETAEAR  = 10. ,&
+% 									 GAMMA1EAR = 0. , NGAMMAEAR = 1 , DGAMMAEAR = 0. 
+% ! Stems used with Infinite length for stem and Trunks_ABS
+% REAL, PARAMETER :: ALPHA1STE = 15., NALPHASTE = 12, DALPHASTE = 30. ,&
+% 									 BETA1STE  = 0. , NBETASTE  = 1 , DBETASTE  = 0.  ,&
+% 									 GAMMA1STE = 0. , NGAMMASTE = 1 , DGAMMASTE = 0. 
+% ! Used for branches Infinte length
+% REAL, PARAMETER :: ALPHA1BRA = 15., NALPHABRA = 12, DALPHABRA = 30. ,&
+% 									 BETA1BRA = 4.5 , NBETABRA  = 10, DBETABRA  = 9.  ,&
+% 									 GAMMA1BRA = 0. , NGAMMABRA = 1 , DGAMMABRA = 0. 
+%  
+ 
