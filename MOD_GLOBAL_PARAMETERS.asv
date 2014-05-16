@@ -168,3 +168,26 @@ global chi; if isempty(chi), chi =[.5773502692 , -.5773502692]; end; %weights of
  global NGAMMABRA; if isempty(NGAMMABRA), NGAMMABRA = 1 ; end;
  global DGAMMABRA; if isempty(DGAMMABRA), DGAMMABRA = 0.; end;
 
+
+%  ! Leaves, used with Raylegh-Gans and Pysical Optics approximation
+% REAL, PARAMETER :: ALPHA1DIS = 15., NALPHADIS = 12, DALPHADIS = 30. ,&
+% 									 BETA1DIS  = 5. , NBETADIS  = 9 , DBETADIS  = 10. ,&
+% 									 GAMMA1DIS = 0. , NGAMMADIS = 1 , DGAMMADIS = 0.  
+% ! Petioles, needles, used with Rayleigh-Gans and Infinte length
+% REAL, PARAMETER :: ALPHA1PET = 15., NALPHAPET = 12, DALPHAPET = 30. ,&
+% 									 BETA1PET  = 5. , NBETAPET  = 9 , DBETAPET  = 10. ,&
+% 									 GAMMA1PET = 0. , NGAMMAPET = 1 , DGAMMAPET = 0. 
+% ! Ears used with Rayleigh-Gans and Infinite length
+% REAL, PARAMETER :: ALPHA1EAR = 15., NALPHAEAR = 12, DALPHAEAR = 30. ,&
+% 									 BETA1EAR  = 5. , NBETAEAR  = 9 , DBETAEAR  = 10. ,&
+% 									 GAMMA1EAR = 0. , NGAMMAEAR = 1 , DGAMMAEAR = 0. 
+% ! Stems used with Infinite length for stem and Trunks_ABS
+% REAL, PARAMETER :: ALPHA1STE = 15., NALPHASTE = 12, DALPHASTE = 30. ,&
+% 									 BETA1STE  = 0. , NBETASTE  = 1 , DBETASTE  = 0.  ,&
+% 									 GAMMA1STE = 0. , NGAMMASTE = 1 , DGAMMASTE = 0. 
+% ! Used for branches Infinte length
+% REAL, PARAMETER :: ALPHA1BRA = 15., NALPHABRA = 12, DALPHABRA = 30. ,&
+% 									 BETA1BRA = 4.5 , NBETABRA  = 10, DBETABRA  = 9.  ,&
+% 									 GAMMA1BRA = 0. , NGAMMABRA = 1 , DGAMMABRA = 0. 
+%  
+ 
