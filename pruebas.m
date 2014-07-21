@@ -10,6 +10,7 @@ MOD_GLOBAL_PARAMETERS
 
 % CALL INFINITE_LENGTH(1.0,100.,0.5,0.3,s,ke,'S')
 tic
+% SUBROUTINE INFINITE_LENGTH(acyl,lcyl,amoi,dsdw,s,ke,select)
 [s,ke] = MOD_VEGERARION_FUNCTIONS_INFINITE_LENGTH(1.0,100,0.5,0.3,'s');
 toc
 a = 1;

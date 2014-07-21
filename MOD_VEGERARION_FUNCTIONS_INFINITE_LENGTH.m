@@ -18,6 +18,7 @@ global chi;
 global om;
 global nmax0;
 global ns;
+global nf;
 
 % Leaves, used with Raylegh-Gans and Pysical Optics approximation
  global ALPHA1DIS; 
